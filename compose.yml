@@ -1,0 +1,23 @@
+services:
+  postgres:
+    container_name: database
+    image: postgres
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_DB: blogball
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres:/data/postgres
+    networks:
+      - blogball-network
+    restart: unless-stopped
+
+networks:
+  blogball-network:
+    driver: bridge
+volumes:
+  postgres:
+    driver: local
