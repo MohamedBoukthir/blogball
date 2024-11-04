@@ -9,7 +9,7 @@ spring:
   application:
     name: blogball
   datasource:
-    url: jdbc:postgresql://localhost:5432/readly
+    url: jdbc:postgresql://localhost:5432/blogball
     username: username
     password: password
     driver-class-name: org.postgresql.Driver
