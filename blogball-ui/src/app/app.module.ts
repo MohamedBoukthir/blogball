@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
-import { CateoryNavbarComponent } from './layout/cateory-navbar/cateory-navbar.component';
+import {CategoryNavbarComponent} from './layout/category-navbar/category-navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SingleCategoryComponent } from './pages/single-category/single-category.component';
 import { SinglePostComponent } from './pages/single-post/single-post.component';
@@ -21,7 +21,7 @@ import { AboutComponent } from './pages/about/about.component';
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    CateoryNavbarComponent,
+    CategoryNavbarComponent,
     HomeComponent,
     SingleCategoryComponent,
     SinglePostComponent,
