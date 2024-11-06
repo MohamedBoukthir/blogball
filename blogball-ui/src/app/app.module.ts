@@ -14,6 +14,8 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { CommentFormComponent } from './comments/comment-form/comment-form.component';
 import { CommentListComponent } from './comments/comment-list/comment-list.component';
 import { AboutComponent } from './pages/about/about.component';
+import { PostCardComponent } from './layout/post-card/post-card.component';
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 
 
 @NgModule({
@@ -30,11 +32,13 @@ import { AboutComponent } from './pages/about/about.component';
     CommentFormComponent,
     CommentListComponent,
     AboutComponent,
+    PostCardComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FaIconComponent
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
