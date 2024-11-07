@@ -4,15 +4,18 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {
-      colors: {
-        primary: "#669bbc" ,
-        secondary: "#fdf0d5",
-        body: "#003049",
-        FooterNavbar: '#fefafe'
-      },
-    },
+    extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ],
+  daisyui: {
+    themes: ['acid' , 'night'],
+    darkTheme: 'night',
+    base: true,
+    utils: true,
+    logs: true,
+    themeRoot : ':root'
+  }
 }
 

@@ -16,6 +16,7 @@ import { CommentListComponent } from './comments/comment-list/comment-list.compo
 import { AboutComponent } from './pages/about/about.component';
 import { PostCardComponent } from './layout/post-card/post-card.component';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import { ThemeSwitcherComponent } from './layout/theme-switcher/theme-switcher.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {FaIconComponent} from "@fortawesome/angular-fontawesome";
     CommentListComponent,
     AboutComponent,
     PostCardComponent,
+    ThemeSwitcherComponent,
   ],
     imports: [
         BrowserModule,
