@@ -1,0 +1,57 @@
+<div class="flex items-center md:h-screen p-4">
+  <div class="w-full max-w-4xl max-md:max-w-xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-16 w-full sm:p-8 p-6 shadow-md rounded-md overflow-hidden">
+      <form class="w-full">
+        <div class="mb-8">
+          <h3 class="text-2xl font-bold text-center">Welcome back</h3>
+        </div>
+        <div class="space-y-6">
+          <div>
+            <label class="text-sm mb-2 block">Username</label>
+            <div class="relative flex items-center">
+              <input name="username" type="text" required class="bg-white border border-gray-300 w-full text-sm text-gray-800 pl-4 pr-10 py-2.5 rounded-md outline-primary" placeholder="Enter you username" />
+              <fa-icon [icon]="['fas', 'user']" class="w-4 h-4 absolute right-4"></fa-icon>
+            </div>
+          </div>
+          <div>
+            <label class="text-sm mb-2 block">Password</label>
+            <div class="relative flex items-center">
+              <input name="password" type="password" required class="bg-white border border-gray-300 w-full text-sm text-gray-800 pl-4 pr-10 py-2.5 rounded-md outline-primary" placeholder="Enter your password" />
+              <fa-icon [icon]="['fas', 'eye']" class="w-4 h-4 absolute right-4"></fa-icon>
+            </div>
+          </div>
+        </div>
+        <div class="!mt-8">
+          <button type="button" class="w-full py-2.5 px-4 text-sm tracking-wider font-semibold rounded-md btn btn-outline btn-primary">
+            Login
+          </button>
+        </div>
+        <p class="text-sm mt-6 text-center">You don&apos;t have an account? <a class="text-primary font-semibold hover:underline ml-1" routerLink="/register">Create an account</a></p>
+      </form>
+      <div class="max-md:order-1 space-y-6">
+        <div class="md:mb-16 mb-8">
+          <h3 class="text-2xl font-bold text-center">OR</h3>
+        </div>
+        <div class="space-y-6">
+          <button type="button"
+                  class="w-full px-5 py-2.5 flex items-center justify-center rounded-md text-black gap-3 text-base tracking-wider font-semibold border-none outline-none bg-gray-100 hover:bg-gray-200">
+            <img src="assets/github.svg" alt="github" class="h-7 w-7">
+            Continue with Github
+          </button>
+          <button type="button"
+                  class="w-full px-5 py-2.5 flex items-center justify-center rounded-md text-gray-800 gap-3 text-base tracking-wider font-semibold border-none outline-none bg-gray-100 hover:bg-gray-200">
+            <img src="/assets/google.svg" alt="google" class="h-7 w-7">
+            Continue with Google
+          </button>
+          <button type="button"
+                  class="w-full px-5 py-2.5 flex items-center justify-center rounded-md text-black gap-3 text-base tracking-wider font-semibold border-none outline-none bg-gray-100 hover:bg-gray-200">
+            <img src="assets/apple.svg" alt="apple" class="h-7 w-7">
+            Continue with Apple
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
