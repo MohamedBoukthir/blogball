@@ -5,7 +5,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
-import {CategoryNavbarComponent} from './layout/category-navbar/category-navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SingleCategoryComponent } from './pages/single-category/single-category.component';
 import { SinglePostComponent } from './pages/single-post/single-post.component';
@@ -17,6 +16,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { PostCardComponent } from './layout/post-card/post-card.component';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import { ThemeSwitcherComponent } from './layout/theme-switcher/theme-switcher.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 @NgModule({
@@ -24,7 +25,6 @@ import { ThemeSwitcherComponent } from './layout/theme-switcher/theme-switcher.c
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    CategoryNavbarComponent,
     HomeComponent,
     SingleCategoryComponent,
     SinglePostComponent,
@@ -35,6 +35,8 @@ import { ThemeSwitcherComponent } from './layout/theme-switcher/theme-switcher.c
     AboutComponent,
     PostCardComponent,
     ThemeSwitcherComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
     imports: [
         BrowserModule,
