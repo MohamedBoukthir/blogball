@@ -4,7 +4,6 @@ import com.mohamed.blogball.security.JwtService;
 import com.mohamed.blogball.security.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -33,23 +32,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     ) throws ServletException, IOException {
 
         final String username;
-        String token = null;
+
         // Extract token from cookies
-        if (request.getCookies() != null) {
-            for (Cookie cookie : request.getCookies()) {
-                if (cookie.getName().equals("accessToken")) {
-                    token = cookie.getValue();
-                }
-            }
-        }
+        String token = jwtService.getTokenFromCookie(request);
+        // DEBUG : Log the cookie
+        System.out.println("Extracted Token: " + token);
+
         // Proceed if token is missing
         if (token == null) {
             filterChain.doFilter(request, response);
             return;
         }
+
         // Extract username or email from token
         username = jwtService.extractUsername(token);
-
         // DEBUG : Log the extracted username (email or username)
         System.out.println("Extracted username from JWT: " + username);
 
