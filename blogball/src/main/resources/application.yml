@@ -24,6 +24,8 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 springdoc:
   default-produces-media-type: application/json
+jwt:
+  secret-key : ${SUPER_SECRET_KEY}
 
 
 
