@@ -26,6 +26,7 @@ springdoc:
   default-produces-media-type: application/json
 jwt:
   secret-key : ${SUPER_SECRET_KEY}
+  expiration: ${COOKIE_EXPIATION}
 
 
 

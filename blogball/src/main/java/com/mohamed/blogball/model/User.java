@@ -3,7 +3,7 @@ package com.mohamed.blogball.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mohamed.blogball.model.audit.DateAudit;
-import com.mohamed.blogball.model.role.Role;
+import com.mohamed.blogball.model.role.RoleName;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -66,13 +65,7 @@ public class User extends DateAudit implements UserDetails {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
-    )
-    private List<Role> roles;
+    private RoleName role;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -104,19 +97,6 @@ public class User extends DateAudit implements UserDetails {
         }
     }
 
-    public List<Role> getRoles() {
-
-        return roles == null ? null : new ArrayList<>(roles);
-    }
-
-    public void setRoles(List<Role> roles) {
-
-        if (roles == null) {
-            this.roles = null;
-        } else {
-            this.roles = Collections.unmodifiableList(roles);
-        }
-    }
 
     public List<Comment> getComments() {
         return comments == null ? null : new ArrayList<>(comments);
@@ -133,9 +113,7 @@ public class User extends DateAudit implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-    return this.roles.stream()
-            .map(role -> new SimpleGrantedAuthority(role.getName().name()))
-            .collect(Collectors.toList());
+    return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
 
