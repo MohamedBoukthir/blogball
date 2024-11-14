@@ -11,8 +11,8 @@ import {RegisterComponent} from "./pages/register/register.component";
 
 const routes: Routes = [
   { path:'', component: HomeComponent },
-  { path:'login' , component: LoginComponent},
-  { path:'register' , component: RegisterComponent},
+  { path:'sign-in' , component: LoginComponent},
+  { path:'sign-up' , component: RegisterComponent},
 
   { path: 'category', component: SingleCategoryComponent },
   { path: 'post', component: SinglePostComponent },

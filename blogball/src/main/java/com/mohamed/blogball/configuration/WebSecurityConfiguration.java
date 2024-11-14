@@ -34,7 +34,7 @@ public class WebSecurityConfiguration {
                 .exceptionHandling(cus -> cus.authenticationEntryPoint(
                         new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
                 .authorizeHttpRequests(req -> req.requestMatchers(
-                        "auth/**",
+                        "/auth/**",
                         "/v2/api-docs",
                         "/v3/api-docs",
                         "/v3/api-docs/**",

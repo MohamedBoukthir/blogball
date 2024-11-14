@@ -18,6 +18,11 @@ import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import { ThemeSwitcherComponent } from './layout/theme-switcher/theme-switcher.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {httpInterceptorProviders} from "./helpers/http.interceptor";
+import {ToastrModule} from "ngx-toastr";
 
 
 @NgModule({
@@ -41,9 +46,18 @@ import { RegisterComponent } from './pages/register/register.component';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FaIconComponent
+        FaIconComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot({
+          timeOut: 2000,
+          progressBar: true,
+          progressAnimation: 'decreasing',
+        })
     ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {
