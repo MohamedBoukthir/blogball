@@ -1,4 +1,11 @@
 import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {CustomValidators} from "../../utils/customValidator";
+import {AuthenticationService} from "../../authentication/authentication.service";
+import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
+import {StorageService} from "../../authentication/storage.service";
+import {LoginRequest, User} from "../../../../types/types";
 
 @Component({
   selector: 'app-login',
@@ -7,6 +14,62 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LoginComponent implements OnInit{
 
-  ngOnInit() {}
+  loginForm! : FormGroup;
+
+  constructor(
+    private formBuilder : FormBuilder,
+    private authenticationService : AuthenticationService,
+    private toastrService : ToastrService,
+    private storageService : StorageService,
+    private router : Router
+  ) {}
+
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      username: ["", [Validators.required, CustomValidators.usernameStrength()]],
+      password: ["", [Validators.required, CustomValidators.passwordStrength()]],
+    })
+  }
+
+  get username() {
+    return this.loginForm.get('username');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
+
+  login() {
+    if (this.loginForm.invalid) {
+      return;
+    }
+    this.authenticationService.login(this.loginForm.value as LoginRequest).subscribe({
+      next: (response) => {
+        console.log(response); // For debugging
+        if (response.error) {
+          this.toastrService.error(response.error, '');
+        }
+        const user: User = {
+          id: response.userDto.id,
+          firstName: response.userDto.firstName,
+          lastName: response.userDto.lastName,
+          username: response.userDto.username,
+          email: response.userDto.email,
+          roleName: response.userDto.roleName,
+          imgUrl: response.userDto.imgUrl || null
+        };
+        this.storageService.saveUser(user);
+        this.authenticationService.setUser(response.userDto);
+        if (this.storageService.isUserLoggedIn()) {
+          this.router.navigateByUrl("/");
+        } else if (this.storageService.isAdminLoggedIn()) {
+          this.router.navigateByUrl("/admin/dashboard");
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
 
 }

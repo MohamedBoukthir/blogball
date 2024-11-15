@@ -115,8 +115,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
             UserDto userDto = UserDto.builder()
                     .id(user.getId())
+                    .firstName(user.getFirstName())
+                    .lastName(user.getLastName())
                     .username(user.getUsername())
                     .email(user.getEmail())
+                    .roleName(user.getRole())
                     .build();
 
             return ResponseEntity.status(HttpStatus.OK)

@@ -4,8 +4,7 @@ export interface User {
   lastName : string,
   username: string,
   email: string,
-  password: string,
-  role: string,
+  roleName: string,
   imgUrl?: string
 }
 
