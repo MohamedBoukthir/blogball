@@ -11,26 +11,16 @@ import {Router} from "@angular/router";
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
-export class RegisterComponent implements OnInit{
+export class RegisterComponent implements OnInit {
 
-  registerForm! : FormGroup;
+  registerForm!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private authenticationService : AuthenticationService,
-    private toastrService : ToastrService,
-    private router : Router
-  ) {}
-
-  ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      firstName: ["", [Validators.required, Validators.maxLength(40)]] ,
-      lastName: ["", [Validators.required, Validators.maxLength(40)]],
-      username: ["", [Validators.required, CustomValidators.usernameStrength()]],
-      email: ["", [Validators.required, Validators.email]],
-      password: ["", [Validators.required, CustomValidators.passwordStrength()]],
-      termsAndConditions: [false, Validators.requiredTrue]
-    });
+    private authenticationService: AuthenticationService,
+    private toastrService: ToastrService,
+    private router: Router
+  ) {
   }
 
   get firstName() {
@@ -40,17 +30,32 @@ export class RegisterComponent implements OnInit{
   get lastName() {
     return this.registerForm.get('lastName')
   }
+
   get username() {
     return this.registerForm.get('username')
   }
+
   get email() {
     return this.registerForm.get('email')
   }
+
   get password() {
     return this.registerForm.get('password')
   }
+
   get termsAndConditions() {
     return this.registerForm.get('termsAndConditions')
+  }
+
+  ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      firstName: ["", [Validators.required, Validators.maxLength(40)]],
+      lastName: ["", [Validators.required, Validators.maxLength(40)]],
+      username: ["", [Validators.required, CustomValidators.usernameStrength()]],
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", [Validators.required, CustomValidators.passwordStrength()]],
+      termsAndConditions: [false, Validators.requiredTrue]
+    });
   }
 
   register() {

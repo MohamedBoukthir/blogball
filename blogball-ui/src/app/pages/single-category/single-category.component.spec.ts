@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SingleCategoryComponent } from './single-category.component';
+import {SingleCategoryComponent} from './single-category.component';
 
 describe('SingleCategoryComponent', () => {
   let component: SingleCategoryComponent;
@@ -10,8 +10,8 @@ describe('SingleCategoryComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [SingleCategoryComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(SingleCategoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

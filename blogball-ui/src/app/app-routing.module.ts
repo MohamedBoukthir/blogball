@@ -10,16 +10,16 @@ import {LoginComponent} from "./pages/login/login.component";
 import {RegisterComponent} from "./pages/register/register.component";
 
 const routes: Routes = [
-  { path:'', component: HomeComponent },
-  { path:'sign-in' , component: LoginComponent},
-  { path:'sign-up' , component: RegisterComponent},
+  {path: '', component: HomeComponent},
+  {path: 'sign-in', component: LoginComponent},
+  {path: 'sign-up', component: RegisterComponent},
 
-  { path: 'category', component: SingleCategoryComponent },
-  { path: 'post', component: SinglePostComponent },
+  {path: 'category', component: SingleCategoryComponent},
+  {path: 'post', component: SinglePostComponent},
 
-  { path: 'about', component: AboutComponent },
-  { path: 'terms-and-conditions' , component: TermsAndConditionComponent },
-  { path: 'contact' , component: ContactUsComponent }
+  {path: 'about', component: AboutComponent},
+  {path: 'terms-and-conditions', component: TermsAndConditionComponent},
+  {path: 'contact', component: ContactUsComponent}
 ];
 
 @NgModule({

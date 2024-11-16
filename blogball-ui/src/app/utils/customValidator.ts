@@ -1,4 +1,4 @@
-import { AbstractControl, ValidationErrors } from '@angular/forms';
+import {AbstractControl, ValidationErrors} from '@angular/forms';
 
 export class CustomValidators {
 
@@ -19,19 +19,19 @@ export class CustomValidators {
 
       // Return specific error messages for failed validation checks
       if (!hasUpperCase) {
-        return { password: 'Password must contain at least one uppercase letter.' };
+        return {password: 'Password must contain at least one uppercase letter.'};
       }
       if (!hasLowerCase) {
-        return { password: 'Password must contain at least one lowercase letter.' };
+        return {password: 'Password must contain at least one lowercase letter.'};
       }
       if (!hasNumeric) {
-        return { password: 'Password must contain at least one number.' };
+        return {password: 'Password must contain at least one number.'};
       }
       if (!hasSpecial) {
-        return { password: 'Password must contain at least one special character.' };
+        return {password: 'Password must contain at least one special character.'};
       }
       if (!isValidLength) {
-        return { password: 'Password must be at least 8 characters long.' };
+        return {password: 'Password must be at least 8 characters long.'};
       }
 
       return null; // If all checks pass, return null (valid password)
@@ -58,12 +58,12 @@ export class CustomValidators {
 
       // If the username is not within the valid length range, return an error.
       if (!isValidLength) {
-        return { username: 'Username must be between 3-30 characters long.' };
+        return {username: 'Username must be between 3-30 characters long.'};
       }
 
       // If the username contains special characters other than letters, numbers, or underscores, return an error.
       if (!hasNoSpecialChars) {
-        return { username: 'Username can only contain letters, numbers, and underscores.' };
+        return {username: 'Username can only contain letters, numbers, and underscores.'};
       }
 
       // If the username passes both checks, return null (indicating that it is valid).

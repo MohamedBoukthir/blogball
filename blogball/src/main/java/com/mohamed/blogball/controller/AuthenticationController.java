@@ -18,16 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "authentication")
 public class AuthenticationController {
 
-    private final AuthenticationService authenticationService;
+  private final AuthenticationService authenticationService;
 
-    @PostMapping("/sign-up")
-    public AuthenticationResponse register(@RequestBody RegisterRequest registerRequest) {
-        return authenticationService.register(registerRequest).getBody();
-    }
+  @PostMapping("/sign-up")
+  public AuthenticationResponse register(@RequestBody RegisterRequest registerRequest) {
+    return authenticationService.register(registerRequest).getBody();
+  }
 
-    @PostMapping("/sign-in")
-    public AuthenticationResponse login(@RequestBody LoginRequest loginRequest, HttpServletResponse httpServletResponse) {
-        return authenticationService.login(loginRequest, httpServletResponse).getBody();
-    }
-
+  @PostMapping("/sign-in")
+  public AuthenticationResponse login(
+      @RequestBody LoginRequest loginRequest, HttpServletResponse httpServletResponse) {
+    return authenticationService.login(loginRequest, httpServletResponse).getBody();
+  }
 }

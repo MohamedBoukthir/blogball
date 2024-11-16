@@ -11,29 +11,28 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-
 @Configuration
 @RequiredArgsConstructor
 public class BeansConfig {
 
-    private final UserDetailsService userDetailsService;
+  private final UserDetailsService userDetailsService;
 
-    @Bean
-    public AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(userDetailsService);
-        provider.setPasswordEncoder(passwordEncoder());
-        return provider;
-    }
+  @Bean
+  public AuthenticationProvider authenticationProvider() {
+    DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+    provider.setUserDetailsService(userDetailsService);
+    provider.setPasswordEncoder(passwordEncoder());
+    return provider;
+  }
 
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
-    }
+  @Bean
+  public AuthenticationManager authenticationManager(
+      AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    return authenticationConfiguration.getAuthenticationManager();
+  }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
 }

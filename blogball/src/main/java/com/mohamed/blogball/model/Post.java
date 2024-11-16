@@ -5,15 +5,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.mohamed.blogball.model.audit.UserDateAudit;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity

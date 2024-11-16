@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ThemeSwitcherComponent } from './theme-switcher.component';
+import {ThemeSwitcherComponent} from './theme-switcher.component';
 
 describe('ThemeSwitcherComponent', () => {
   let component: ThemeSwitcherComponent;
@@ -10,8 +10,8 @@ describe('ThemeSwitcherComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ThemeSwitcherComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(ThemeSwitcherComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -12,23 +12,17 @@ import {LoginRequest, User} from "../../../../types/types";
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
-  loginForm! : FormGroup;
+  loginForm!: FormGroup;
 
   constructor(
-    private formBuilder : FormBuilder,
-    private authenticationService : AuthenticationService,
-    private toastrService : ToastrService,
-    private storageService : StorageService,
-    private router : Router
-  ) {}
-
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      username: ["", [Validators.required, CustomValidators.usernameStrength()]],
-      password: ["", [Validators.required, CustomValidators.passwordStrength()]],
-    })
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService,
+    private toastrService: ToastrService,
+    private storageService: StorageService,
+    private router: Router
+  ) {
   }
 
   get username() {
@@ -37,6 +31,13 @@ export class LoginComponent implements OnInit{
 
   get password() {
     return this.loginForm.get('password');
+  }
+
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      username: ["", [Validators.required, CustomValidators.usernameStrength()]],
+      password: ["", [Validators.required, CustomValidators.passwordStrength()]],
+    })
   }
 
   login() {

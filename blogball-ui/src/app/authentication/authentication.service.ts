@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LoginRequest, RegisterRequest, User} from "../../../types/types";
 import {Observable} from "rxjs";
@@ -7,7 +7,7 @@ import {StorageService} from "./storage.service";
 
 const BASE_URL = 'http://localhost:8080/api/v1/auth/';
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  headers: new HttpHeaders({'Content-Type': 'application/json'}),
 };
 
 @Injectable({
@@ -17,6 +17,12 @@ export class AuthenticationService {
 
   private user: User | null = this.storageService.getUser();
 
+  constructor(
+    private http: HttpClient,
+    private storageService: StorageService
+  ) {
+  }
+
   getUser(): User | null {
     return this.user;
   }
@@ -24,11 +30,6 @@ export class AuthenticationService {
   setUser(user: User): void {
     this.user = user;
   }
-
-  constructor(
-    private http: HttpClient,
-    private storageService: StorageService
-  ) {}
 
   register(registerRequest: RegisterRequest): Observable<any> {
     return this.http.post(BASE_URL + 'sign-up', registerRequest, httpOptions);
@@ -41,6 +42,6 @@ export class AuthenticationService {
   logOut(): Observable<any> {
     this.storageService.clean();
     this.user = null;
-    return this.http.post(BASE_URL + 'logout' , httpOptions);
+    return this.http.post(BASE_URL + 'logout', httpOptions);
   }
 }

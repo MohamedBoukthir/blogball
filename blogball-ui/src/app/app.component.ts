@@ -7,10 +7,10 @@ import {fontAwesomeIcons} from "./utils/fontAwesomeIcons";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'blogball';
 
-  private faIconLibrary= inject(FaIconLibrary);
+  private faIconLibrary = inject(FaIconLibrary);
   private faConfig = inject(FaConfig);
 
   ngOnInit() {
@@ -18,9 +18,9 @@ export class AppComponent implements OnInit{
   }
 
   initFontAwesome() {
-        this.faConfig.defaultPrefix = 'far';
-        this.faIconLibrary.addIcons(...fontAwesomeIcons)
-    }
+    this.faConfig.defaultPrefix = 'far';
+    this.faIconLibrary.addIcons(...fontAwesomeIcons)
+  }
 
 }
 

@@ -2,8 +2,8 @@
   <div class="w-full max-w-4xl max-md:max-w-xl mx-auto">
     <div class="grid md:grid-cols-2 gap-16 w-full sm:p-8 p-6 shadow-md rounded-md overflow-hidden">
       <form
-        class="w-full"
-        [formGroup]="loginForm">
+        [formGroup]="loginForm"
+        class="w-full">
         <div class="mb-8">
           <h3 class="text-2xl font-bold text-center">Welcome back</h3>
         </div>
@@ -11,59 +11,68 @@
           <div>
             <label class="text-sm mb-2 block">Username</label>
             <div class="relative flex items-center">
-              <input formControlName="username" name="username" type="text" required class="bg-white border border-gray-300 w-full text-sm text-gray-800 pl-4 pr-10 py-2.5 rounded-md outline-primary" placeholder="Enter you username" />
+              <input class="bg-white border border-gray-300 w-full text-sm text-gray-800 pl-4 pr-10 py-2.5 rounded-md outline-primary" formControlName="username" name="username" placeholder="Enter you username"
+                     required
+                     type="text"/>
               <fa-icon [icon]="['fas', 'user']" class="w-4 h-4 absolute right-4"></fa-icon>
             </div>
-            <span *ngIf="username?.touched && username?.errors?.['required']" class="block mt-1 pt-1 pl-2 text-xs text-red-500">
+            <span *ngIf="username?.touched && username?.errors?.['required']"
+                  class="block mt-1 pt-1 pl-2 text-xs text-red-500">
                 Username is required.
             </span>
-            <span *ngIf="username?.touched && username?.errors?.['username']" class="block mt-1 pt-1 pl-2 text-xs text-red-500">
+            <span *ngIf="username?.touched && username?.errors?.['username']"
+                  class="block mt-1 pt-1 pl-2 text-xs text-red-500">
                 {{ username?.errors?.['username'] }}
             </span>
           </div>
           <div>
             <label class="text-sm mb-2 block">Password</label>
             <div class="relative flex items-center">
-              <input formControlName="password" name="password" type="password" required class="bg-white border border-gray-300 w-full text-sm text-gray-800 pl-4 pr-10 py-2.5 rounded-md outline-primary" placeholder="Enter your password" />
+              <input class="bg-white border border-gray-300 w-full text-sm text-gray-800 pl-4 pr-10 py-2.5 rounded-md outline-primary" formControlName="password" name="password" placeholder="Enter your password"
+                     required
+                     type="password"/>
               <fa-icon [icon]="['fas', 'eye']" class="w-4 h-4 absolute right-4"></fa-icon>
             </div>
-            <span *ngIf="password?.touched && password?.errors?.['required']" class="block mt-1 pt-1 pl-2 text-xs text-red-500">
+            <span *ngIf="password?.touched && password?.errors?.['required']"
+                  class="block mt-1 pt-1 pl-2 text-xs text-red-500">
                 Username is required.
             </span>
-            <span *ngIf="password?.touched && password?.errors?.['password']" class="block mt-1 pt-1 pl-2 text-xs text-red-500">
+            <span *ngIf="password?.touched && password?.errors?.['password']"
+                  class="block mt-1 pt-1 pl-2 text-xs text-red-500">
                 {{ password?.errors?.['password'] }}
             </span>
           </div>
         </div>
         <div class="!mt-8">
           <button
-            type="button"
             (click)="login()"
             [disabled]="loginForm.invalid"
-            class="w-full py-2.5 px-4 text-sm tracking-wider font-semibold rounded-md btn btn-outline btn-primary">
+            class="w-full py-2.5 px-4 text-sm tracking-wider font-semibold rounded-md btn btn-outline btn-primary"
+            type="button">
             Login
           </button>
         </div>
-        <p class="text-sm mt-6 text-center">You don&apos;t have an account? <a class="text-primary font-semibold hover:underline ml-1" routerLink="/sign-up">Create an account</a></p>
+        <p class="text-sm mt-6 text-center">You don&apos;t have an account? <a
+          class="text-primary font-semibold hover:underline ml-1" routerLink="/sign-up">Create an account</a></p>
       </form>
       <div class="max-md:order-1 space-y-6">
         <div class="md:mb-16 mb-8">
           <h3 class="text-2xl font-bold text-center">OR</h3>
         </div>
         <div class="space-y-6">
-          <button type="button"
-                  class="w-full px-5 py-2.5 flex items-center justify-center rounded-md text-black gap-3 text-base tracking-wider font-semibold border-none outline-none bg-gray-100 hover:bg-gray-200">
-            <img src="assets/github.svg" alt="github" class="h-7 w-7">
+          <button class="w-full px-5 py-2.5 flex items-center justify-center rounded-md text-black gap-3 text-base tracking-wider font-semibold border-none outline-none bg-gray-100 hover:bg-gray-200"
+                  type="button">
+            <img alt="github" class="h-7 w-7" src="assets/github.svg">
             Continue with Github
           </button>
-          <button type="button"
-                  class="w-full px-5 py-2.5 flex items-center justify-center rounded-md text-gray-800 gap-3 text-base tracking-wider font-semibold border-none outline-none bg-gray-100 hover:bg-gray-200">
-            <img src="/assets/google.svg" alt="google" class="h-7 w-7">
+          <button class="w-full px-5 py-2.5 flex items-center justify-center rounded-md text-gray-800 gap-3 text-base tracking-wider font-semibold border-none outline-none bg-gray-100 hover:bg-gray-200"
+                  type="button">
+            <img alt="google" class="h-7 w-7" src="/assets/google.svg">
             Continue with Google
           </button>
-          <button type="button"
-                  class="w-full px-5 py-2.5 flex items-center justify-center rounded-md text-black gap-3 text-base tracking-wider font-semibold border-none outline-none bg-gray-100 hover:bg-gray-200">
-            <img src="assets/apple.svg" alt="apple" class="h-7 w-7">
+          <button class="w-full px-5 py-2.5 flex items-center justify-center rounded-md text-black gap-3 text-base tracking-wider font-semibold border-none outline-none bg-gray-100 hover:bg-gray-200"
+                  type="button">
+            <img alt="apple" class="h-7 w-7" src="assets/apple.svg">
             Continue with Apple
           </button>
         </div>

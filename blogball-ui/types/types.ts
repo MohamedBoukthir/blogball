@@ -1,7 +1,7 @@
 export interface User {
   id: number,
   firstName: string,
-  lastName : string,
+  lastName: string,
   username: string,
   email: string,
   roleName: string,
@@ -10,7 +10,7 @@ export interface User {
 
 export interface RegisterRequest {
   firstName: string,
-  lastName : string,
+  lastName: string,
   username: string,
   email: string,
   password: string,

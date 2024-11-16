@@ -15,34 +15,33 @@ import lombok.NoArgsConstructor;
 @Table(name = "comments")
 public class Comment extends UserDateAudit {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
 
-    @Column(name = "body")
-    @NotBlank
-    private String body;
+  @Column(name = "body")
+  @NotBlank
+  private String body;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_id")
-    private Post post;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "post_id")
+  private Post post;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id")
+  private User user;
 
-    public Comment(String body) {
-        this.body = body;
-    }
+  public Comment(String body) {
+    this.body = body;
+  }
 
-    @JsonIgnore
-    public Post getPost() {
-        return post;
-    }
+  @JsonIgnore
+  public Post getPost() {
+    return post;
+  }
 
-    @JsonIgnore
-    public User getUser() {
-        return user;
-    }
-
+  @JsonIgnore
+  public User getUser() {
+    return user;
+  }
 }

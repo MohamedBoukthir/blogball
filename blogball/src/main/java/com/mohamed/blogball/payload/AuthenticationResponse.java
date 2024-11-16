@@ -12,8 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class AuthenticationResponse {
 
-    private UserDto userDto;
-    private String error;
-    private String message;
-
+  private UserDto userDto;
+  private String error;
+  private String message;
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {User} from "../../../types/types";
 
 const USER = 'user';
@@ -8,7 +8,8 @@ const USER = 'user';
 })
 export class StorageService {
 
-  constructor() { }
+  constructor() {
+  }
 
   clean() {
     window.localStorage.clear();
@@ -22,7 +23,7 @@ export class StorageService {
   getUser(): User | null {
     const user = window.localStorage.getItem(USER);
     if (user) {
-      return  JSON.parse(user);
+      return JSON.parse(user);
     }
     return null;
   }

@@ -9,8 +9,10 @@ import org.springframework.http.ResponseEntity;
 
 public interface AuthenticationService {
 
-    UserDto createUserAccount(RegisterRequest registerRequest);
-    ResponseEntity<AuthenticationResponse> register(RegisterRequest registerRequest);
-    ResponseEntity<AuthenticationResponse> login(LoginRequest loginRequest, HttpServletResponse httpServletResponse);
+  UserDto createUserAccount(RegisterRequest registerRequest);
 
+  ResponseEntity<AuthenticationResponse> register(RegisterRequest registerRequest);
+
+  ResponseEntity<AuthenticationResponse> login(
+      LoginRequest loginRequest, HttpServletResponse httpServletResponse);
 }
