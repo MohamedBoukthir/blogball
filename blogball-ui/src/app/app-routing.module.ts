@@ -14,6 +14,9 @@ const routes: Routes = [
   {path: 'sign-in', component: LoginComponent},
   {path: 'sign-up', component: RegisterComponent},
 
+  // user module
+  { path: 'user' , loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule) },
+
   {path: 'category', component: SingleCategoryComponent},
   {path: 'post', component: SinglePostComponent},
 

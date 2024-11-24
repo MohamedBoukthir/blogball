@@ -62,9 +62,9 @@ export class LoginComponent implements OnInit {
         this.storageService.saveUser(user);
         this.authenticationService.setUser(response.userDto);
         if (this.storageService.isUserLoggedIn()) {
-          this.router.navigateByUrl("/");
+          this.router.navigateByUrl("/user/feed"); // navigate the user to the feed
         } else if (this.storageService.isAdminLoggedIn()) {
-          this.router.navigateByUrl("/admin/dashboard");
+          this.router.navigateByUrl("/");
         }
       },
       error: (err) => {
