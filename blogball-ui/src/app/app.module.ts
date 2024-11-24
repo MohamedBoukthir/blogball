@@ -24,6 +24,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {httpInterceptorProviders} from "./helpers/http.interceptor";
 import {ToastrModule} from "ngx-toastr";
 import {HeroComponent} from './layout/hero/hero.component';
+import { LatestPostsComponent } from './posts/latest-posts/latest-posts.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import {HeroComponent} from './layout/hero/hero.component';
     LoginComponent,
     RegisterComponent,
     HeroComponent,
+    LatestPostsComponent,
   ],
   imports: [
     BrowserModule,
