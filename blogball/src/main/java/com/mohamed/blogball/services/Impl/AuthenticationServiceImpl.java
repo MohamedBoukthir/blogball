@@ -105,8 +105,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
       ResponseCookie responseCookie =
           ResponseCookie.from("accessToken", accessToken)
               .httpOnly(true)
-              .secure(false)
-              .path("/") // Change to true in production
+              .secure(false) // Set to true in production (HTTPS)
+              .path("/") // TODO: Change to true in production
+              .sameSite("Lax") // Prevent CSRF
               .maxAge(expiration)
               .build();
       httpServletResponse.addHeader(HttpHeaders.SET_COOKIE, responseCookie.toString());

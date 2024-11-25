@@ -13,7 +13,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -49,20 +48,14 @@ public class WebSecurityConfiguration {
                         "/webjars/**",
                         "/swagger-ui.html")
                     .permitAll()
-                    .requestMatchers("user/**")
+                    .requestMatchers("/user/**")
                     .hasAnyAuthority(RoleName.ROLE_USER.name())
-                    .requestMatchers("admin/**")
+                    .requestMatchers("/admin/**")
                     .hasAnyAuthority(RoleName.ROLE_ADMIN.name())
                     .anyRequest()
                     .authenticated())
         .sessionManagement(
             session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .logout(
-            logout ->
-                logout
-                    .logoutUrl("auth/logout")
-                    .deleteCookies("accessToken")
-                    .logoutSuccessHandler((req, res, auth) -> SecurityContextHolder.clearContext()))
         .authenticationProvider(authenticationProvider)
         .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
     return httpSecurity.build();

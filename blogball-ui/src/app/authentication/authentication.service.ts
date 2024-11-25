@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LoginRequest, RegisterRequest, User} from "../../../types/types";
-import {Observable} from "rxjs";
+import {catchError, Observable, tap, throwError} from "rxjs";
 import {StorageService} from "./storage.service";
 
 
@@ -40,8 +40,14 @@ export class AuthenticationService {
   }
 
   logOut(): Observable<any> {
-    this.storageService.clean();
-    this.user = null;
-    return this.http.post(BASE_URL + 'logout', httpOptions);
+    return this.http.post(`${BASE_URL}logout`, {}, httpOptions).pipe(
+      tap(() => {
+        this.storageService.clean();
+      }),
+      catchError((error) => {
+        console.error('Logout failed', error);
+        return throwError(() => new Error('Logout failed. Please try again.'));
+      })
+    );
   }
 }

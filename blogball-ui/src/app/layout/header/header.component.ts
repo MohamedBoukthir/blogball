@@ -36,9 +36,16 @@ export class HeaderComponent implements OnInit{
     this.isUserLoggedIn = this.storageService.isUserLoggedIn();
   }
 
-  logOut() {
-    this.authenticationService.logOut();
-    this.router.navigateByUrl('/sign-in')
+  logOut(): void {
+    this.authenticationService.logOut().subscribe({
+      next: () => {
+        this.router.navigate(['/sign-in']);
+      },
+      error: (err) => {
+        console.error('Logout failed', err);
+        // Optionally, show an error message to the user
+      },
+    });
   }
 
 }
