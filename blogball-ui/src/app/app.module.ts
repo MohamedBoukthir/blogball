@@ -25,6 +25,8 @@ import {httpInterceptorProviders} from "./helpers/http.interceptor";
 import {ToastrModule} from "ngx-toastr";
 import {HeroComponent} from './layout/hero/hero.component';
 import { LatestPostsComponent } from './posts/latest-posts/latest-posts.component';
+import {NgOptimizedImage, provideImgixLoader} from '@angular/common';
+import { SliderComponent } from './layout/slider/slider.component';
 
 
 @NgModule({
@@ -46,6 +48,7 @@ import { LatestPostsComponent } from './posts/latest-posts/latest-posts.componen
     RegisterComponent,
     HeroComponent,
     LatestPostsComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,9 +62,13 @@ import { LatestPostsComponent } from './posts/latest-posts/latest-posts.componen
       timeOut: 2000,
       progressBar: true,
       progressAnimation: 'decreasing',
-    })
+    }),
+    NgOptimizedImage
   ],
-  providers: [httpInterceptorProviders],
+  providers: [
+    httpInterceptorProviders,
+    provideImgixLoader('https://cdn.dribbble.com/users/494229/screenshots/1601132/media/cce678fcc99418b1421798e4c470c483.gif')
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
