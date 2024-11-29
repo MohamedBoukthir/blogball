@@ -9,6 +9,7 @@ import com.mohamed.blogball.payload.LoginRequest;
 import com.mohamed.blogball.payload.RegisterRequest;
 import com.mohamed.blogball.security.JwtService;
 import com.mohamed.blogball.services.AuthenticationService;
+import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +35,29 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
   @Value("${jwt.expiration}")
   private int expiration;
+  @Value("${admin.username}")
+  private String adminUsername;
+  @Value("${admin.email}")
+  private String adminEmail;
+  @Value("${admin.password}")
+  private String adminPassword;
+
+  // generate the admin account by default
+  @PostConstruct
+  public void createAdminAcc() {
+    User adminAccount = userRepository.findByRole(RoleName.ROLE_ADMIN);
+    if (adminAccount == null) {
+      User newAdminAccount = new User();
+      newAdminAccount.setFirstName("admin");
+      newAdminAccount.setLastName("admin");
+      newAdminAccount.setUsername(adminUsername);
+      newAdminAccount.setEmail(adminEmail);
+      newAdminAccount.setPassword(new BCryptPasswordEncoder().encode(adminPassword));
+      newAdminAccount.setRole(RoleName.ROLE_ADMIN);
+      userRepository.save(newAdminAccount);
+      System.out.println("admin is here");
+    }
+  }
 
   @Override
   public UserDto createUserAccount(RegisterRequest registerRequest) {

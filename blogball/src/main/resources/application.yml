@@ -28,5 +28,10 @@ jwt:
   secret-key: ${SUPER_SECRET_KEY}
   expiration: ${COOKIE_EXPIATION}
 
+admin:
+  username: ${ADMIN_USERNAME}
+  email: ${ADMIN_EMAIL}
+  password: ${ADMIN_PASSWORD}
+
 
 
