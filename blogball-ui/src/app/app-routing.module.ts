@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "./pages/home/home.component";
-import {SingleCategoryComponent} from "./pages/single-category/single-category.component";
-import {SinglePostComponent} from "./pages/single-post/single-post.component";
+import {SingleCategoryComponent} from "./category/single-category/single-category.component";
+import {SinglePostComponent} from "./posts/single-post/single-post.component";
 import {AboutComponent} from "./pages/about/about.component";
 import {TermsAndConditionComponent} from "./pages/terms-and-condition/terms-and-condition.component";
 import {ContactUsComponent} from "./pages/contact-us/contact-us.component";
