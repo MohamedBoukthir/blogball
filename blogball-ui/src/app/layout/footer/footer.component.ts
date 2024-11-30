@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {StorageService} from "../../authentication/storage.service";
 
 @Component({
   selector: 'app-footer',
@@ -8,5 +9,9 @@ import {Component} from '@angular/core';
 export class FooterComponent {
 
   currentYear: number = new Date().getFullYear();
+
+  constructor(
+    protected storageService : StorageService,
+  ) {}
 
 }

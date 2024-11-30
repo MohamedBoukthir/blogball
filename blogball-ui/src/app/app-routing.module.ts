@@ -1,8 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "./pages/home/home.component";
-import {SingleCategoryComponent} from "./category/single-category/single-category.component";
-import {SinglePostComponent} from "./posts/single-post/single-post.component";
 import {AboutComponent} from "./pages/about/about.component";
 import {TermsAndConditionComponent} from "./pages/terms-and-condition/terms-and-condition.component";
 import {ContactUsComponent} from "./pages/contact-us/contact-us.component";
@@ -16,9 +14,9 @@ const routes: Routes = [
 
   // user module
   { path: 'user' , loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule) },
+  // admin module
+  { path: 'admin' , loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
 
-  {path: 'category', component: SingleCategoryComponent},
-  {path: 'post', component: SinglePostComponent},
 
   {path: 'about', component: AboutComponent},
   {path: 'terms-and-conditions', component: TermsAndConditionComponent},
