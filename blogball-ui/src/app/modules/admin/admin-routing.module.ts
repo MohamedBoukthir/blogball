@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
-import {CategoriesComponent} from "../../category/categories/categories.component";
+import {CategoryManagementComponent} from "./pages/category-management/category-management.component";
 
 const routes: Routes = [
   { path: 'dashboard' , component: DashboardComponent},
-  { path: 'categories', component: CategoriesComponent}
+  { path: 'categories-management', component: CategoryManagementComponent}
 ];
 
 @NgModule({
