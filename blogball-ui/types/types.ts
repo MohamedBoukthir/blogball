@@ -8,6 +8,11 @@ export interface User {
   imgUrl?: string
 }
 
+export interface Category {
+  id: number,
+  name: string
+}
+
 export interface RegisterRequest {
   firstName: string,
   lastName: string,

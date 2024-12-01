@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {FooterComponent} from './layout/footer/footer.component';
 import {HeaderComponent} from './layout/header/header.component';
 import {HomeComponent} from './pages/home/home.component';
-import {SingleCategoryComponent} from './category/single-category/single-category.component';
+import {SingleCategoryComponent} from './category/components/single-category/single-category.component';
 import {SinglePostComponent} from './posts/single-post/single-post.component';
 import {TermsAndConditionComponent} from './pages/terms-and-condition/terms-and-condition.component';
 import {ContactUsComponent} from './pages/contact-us/contact-us.component';
@@ -27,7 +27,7 @@ import {HeroComponent} from './layout/hero/hero.component';
 import { LatestPostsComponent } from './posts/latest-posts/latest-posts.component';
 import {NgOptimizedImage, provideImgixLoader} from '@angular/common';
 import { SliderComponent } from './layout/slider/slider.component';
-import { CategoriesComponent } from './category/categories/categories.component';
+import { CategoriesComponent } from './category/components/categories/categories.component';
 
 
 @NgModule({

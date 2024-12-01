@@ -1,0 +1,31 @@
+<div class="sm:px-6 w-full">
+  <div class="py-4 md:py-7 px-4 md:px-8 xl:px-10">
+    <div class="flex items-end justify-end">
+      <button class="btn btn-primary">
+        <p class="text-sm font-medium leading-none text-white">Add Task</p>
+      </button>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>ID</th>
+          <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let category of categories; let i = index;">
+          <th>{{ i + 1}}</th>
+          <td>{{category.id}}</td>
+          <td>{{category.name}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
