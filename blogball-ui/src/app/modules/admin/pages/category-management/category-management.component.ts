@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {CategoryService} from "../../../../category/services/category.service";
 import {Category} from "../../../../../../types/types";
 
@@ -10,6 +10,21 @@ import {Category} from "../../../../../../types/types";
 export class CategoryManagementComponent implements OnInit{
 
   categories: Category[] = [];
+  newCategory: Category = {id: 0, name:''};
+  selectedCategory: Category | null = null;
+
+
+  // Access the modal dialog element
+  @ViewChild('myModal') myModal: any;
+
+  openModal() {
+    this.myModal.nativeElement.showModal(); // Show modal using the showModal method
+  }
+  closeModal() {
+    this.myModal.nativeElement.close(); // Close modal using the close method
+  }
+
+
 
   constructor(
     private categoryService : CategoryService
@@ -30,6 +45,36 @@ export class CategoryManagementComponent implements OnInit{
       },
       complete: () => {
         console.log('Category fetch complete');
+      }
+    });
+  }
+
+  addNewCategory() {
+    if (this.newCategory.name.trim()) {
+      this.categoryService.addCategory(this.newCategory).subscribe({
+        next: (category : Category) => {
+          this.categories.push(category);
+          this.closeModal();
+          this.newCategory = {id: 0, name: ''};
+        },
+        error: (err) => {
+         console.error('Error adding categories', err);
+        },
+        complete:() => {
+          console.log('Category added.')
+        }
+      })
+    }
+   }
+
+  deleteCategory(categoryId: number) {
+    console.log('Deleting category with ID:', categoryId);
+    this.categoryService.deleteCategory(categoryId).subscribe({
+      next: () => {
+        this.fetchAllCategories();  // Refresh the categories list
+      },
+      error:(error) => {
+      console.error("Error deleting category:", error)
       }
     });
   }

@@ -1,5 +1,12 @@
 import {faFacebook, faGithub, faInstagram, IconDefinition} from "@fortawesome/free-brands-svg-icons";
-import {faEnvelope, faEye, faUser} from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faEye,
+  faPenToSquare,
+  faPlus,
+  faTrash,
+  faUser
+} from "@fortawesome/free-solid-svg-icons";
 
 export const fontAwesomeIcons: IconDefinition[] = [
   faUser,
@@ -7,5 +14,8 @@ export const fontAwesomeIcons: IconDefinition[] = [
   faEye,
   faGithub,
   faFacebook,
-  faInstagram
+  faInstagram,
+  faPlus,
+  faPenToSquare,
+  faTrash
 ]

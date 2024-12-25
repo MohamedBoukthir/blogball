@@ -1,10 +1,11 @@
 package com.mohamed.blogball.DTO;
 
-import lombok.Builder;
+
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class CategoryDto {
     private Long id;
     private String name;

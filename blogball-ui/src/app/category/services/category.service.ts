@@ -21,20 +21,20 @@ export class CategoryService {
     return this.http.get<Category[]>(`${BASE_URL}/all-categories`, httpOptions);
   }
 
-  getCategory(id: number):Observable<Category> {
-    return this.http.get<Category>(`${BASE_URL}/category/` + id, httpOptions);
+  getCategory(categoryId: number):Observable<Category> {
+    return this.http.get<Category>(`${BASE_URL}/category/` + categoryId, httpOptions);
   }
 
   addCategory(category: Category):Observable<Category> {
     return this.http.post<Category>(`${BASE_URL}/add-category`, category, httpOptions);
   }
 
-  updateCategory(id: number):Observable<Category> {
-    return this.http.put<Category>(`${BASE_URL}/update-category/` + id , httpOptions);
+  updateCategory(categoryId: number):Observable<Category> {
+    return this.http.put<Category>(`${BASE_URL}/update-category/` + categoryId , httpOptions);
   }
 
-  deleteCategory(id: number):Observable<void> {
-    return this.http.delete<void>(`${BASE_URL}/delete-category/` + id , httpOptions);
+  deleteCategory(categoryId: number):Observable<void> {
+    return this.http.delete<void>(`${BASE_URL}/delete-category/` + categoryId , httpOptions);
   }
 
 }

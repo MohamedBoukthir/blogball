@@ -1,10 +1,37 @@
 <div class="sm:px-6 w-full">
   <div class="py-4 md:py-7 px-4 md:px-8 xl:px-10">
     <div class="flex items-end justify-end">
-      <button class="btn btn-primary">
-        <p class="text-sm font-medium leading-none text-white">Add Task</p>
+      <button class="btn btn-primary" (click)="openModal()">
+        <p>Add Category</p>
+        <fa-icon [icon]="['fas', 'plus']" class="text-lg"></fa-icon>
       </button>
     </div>
+    <!-- Modal -->
+    <dialog #myModal class="modal">
+      <div class="modal-box">
+        <h3 class="text-lg font-bold">Add New Category</h3>
+        <p class="py-4">Enter the name of the new category</p>
+        <!-- Modal Form -->
+        <div class="mt-4">
+          <label for="category-name" class="block text-sm">Category Name</label>
+          <input
+            [(ngModel)]="newCategory.name"
+            type="text"
+            id="category-name"
+            name="category-name"
+            class="w-full p-2 mt-2 border rounded"
+            required
+          />
+        </div>
+        <!-- Modal Buttons -->
+        <div class="mt-4 text-right">
+          <button type="button" (click)="closeModal()" class="btn btn-outline mr-2">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="addNewCategory()">
+            Add Category
+          </button>
+        </div>
+      </div>
+    </dialog>
     <div class="overflow-x-auto mt-4">
       <table class="table">
         <thead>
@@ -12,6 +39,7 @@
           <th>#</th>
           <th>ID</th>
           <th>Name</th>
+          <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -19,6 +47,18 @@
           <th>{{ i + 1}}</th>
           <td>{{category.id}}</td>
           <td>{{category.name}}</td>
+          <td class="flex space-x-4">
+            <fa-icon
+              [icon]="['fas', 'trash']"
+              class="cursor-pointer text-lg"
+              (click)="deleteCategory(category.id)">
+            </fa-icon>
+            <fa-icon
+              [icon]="['fas', 'pen-to-square']"
+              class="cursor-pointer text-lg"
+              (click)="deleteCategory(category.id)">
+            </fa-icon>
+          </td>
         </tr>
         </tbody>
       </table>

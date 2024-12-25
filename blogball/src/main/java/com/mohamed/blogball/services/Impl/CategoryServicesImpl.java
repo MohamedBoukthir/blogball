@@ -9,7 +9,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+
 
 @Service
 @RequiredArgsConstructor
@@ -51,7 +53,6 @@ public class CategoryServicesImpl implements CategoryServices {
                 .findById(categoryId)
                 .orElseThrow( () -> new RuntimeException("Category Not Fount"));
         category.setName(categoryDto.getName());
-        category.setId(categoryDto.getId());
         Category updatedCategory = categoryRepository.save(category);
 
         return modelMapper.map(updatedCategory, CategoryDto.class);
@@ -59,9 +60,7 @@ public class CategoryServicesImpl implements CategoryServices {
 
     @Override
     public void deleteCategory(Long categoryId) {
-        Category category = categoryRepository
-                .findById(categoryId)
-                .orElseThrow( () -> new RuntimeException("Category Not Fount"));
-        categoryRepository.delete(category);
+        Optional<Category> category = categoryRepository.findById(categoryId);
+        category.ifPresent(categoryRepository::delete);
     }
 }
