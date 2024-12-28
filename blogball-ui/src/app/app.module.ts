@@ -25,9 +25,9 @@ import {httpInterceptorProviders} from "./helpers/http.interceptor";
 import {ToastrModule} from "ngx-toastr";
 import {HeroComponent} from './layout/hero/hero.component';
 import { LatestPostsComponent } from './posts/latest-posts/latest-posts.component';
-import {NgOptimizedImage, provideImgixLoader} from '@angular/common';
 import { SliderComponent } from './layout/slider/slider.component';
 import { CategoriesComponent } from './category/components/categories/categories.component';
+import { OutSideClickDirective } from './Directives/out-side-click.directive';
 
 
 @NgModule({
@@ -51,6 +51,7 @@ import { CategoriesComponent } from './category/components/categories/categories
     LatestPostsComponent,
     SliderComponent,
     CategoriesComponent,
+    OutSideClickDirective,
   ],
   imports: [
     BrowserModule,
@@ -65,11 +66,9 @@ import { CategoriesComponent } from './category/components/categories/categories
       progressBar: true,
       progressAnimation: 'decreasing',
     }),
-    NgOptimizedImage
   ],
   providers: [
     httpInterceptorProviders,
-    provideImgixLoader('https://cdn.dribbble.com/users/494229/screenshots/1601132/media/cce678fcc99418b1421798e4c470c483.gif')
   ],
   bootstrap: [AppComponent]
 })

@@ -3,16 +3,23 @@ import {StorageService} from "../../authentication/storage.service";
 import {AuthenticationService} from "../../authentication/authentication.service";
 import {NavigationEnd, Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit{
 
   isUserLoggedIn : boolean = false;
   isAdminLoggedIn : boolean = false;
 
+  isOpen = false;
+
+
+  toggle = () => {
+    this.isOpen = !this.isOpen;
+  };
 
   constructor(
     private authenticationService : AuthenticationService,
