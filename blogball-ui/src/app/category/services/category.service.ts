@@ -29,10 +29,6 @@ export class CategoryService {
     return this.http.post<Category>(`${BASE_URL}/add-category`, category, httpOptions);
   }
 
-  updateCategory(categoryId: number):Observable<Category> {
-    return this.http.put<Category>(`${BASE_URL}/update-category/` + categoryId , httpOptions);
-  }
-
   deleteCategory(categoryId: number):Observable<void> {
     return this.http.delete<void>(`${BASE_URL}/delete-category/` + categoryId , httpOptions);
   }

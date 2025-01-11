@@ -1,12 +1,12 @@
 <div class="sm:px-6 w-full">
   <div class="py-4 md:py-7 px-4 md:px-8 xl:px-10">
     <div class="flex items-end justify-end">
-      <button class="btn btn-primary" (click)="openModal()">
+      <button class="btn btn-primary" (click)="openAddCategoryModal()">
         <p>Add Category</p>
         <fa-icon [icon]="['fas', 'plus']" class="text-lg"></fa-icon>
       </button>
     </div>
-    <!-- Modal -->
+    <!-- Add Category Modal -->
     <dialog #myModal class="modal">
       <div class="modal-box">
         <h3 class="text-lg font-bold">Add New Category</h3>
@@ -25,7 +25,7 @@
         </div>
         <!-- Modal Buttons -->
         <div class="mt-4 text-right">
-          <button type="button" (click)="closeModal()" class="btn btn-outline mr-2">Cancel</button>
+          <button type="button" (click)="closeAddCategoryModal()" class="btn btn-outline mr-2">Cancel</button>
           <button type="button" class="btn btn-primary" (click)="addNewCategory()">
             Add Category
           </button>
@@ -50,11 +50,6 @@
           <td class="flex space-x-4">
             <fa-icon
               [icon]="['fas', 'trash']"
-              class="cursor-pointer text-lg"
-              (click)="deleteCategory(category.id)">
-            </fa-icon>
-            <fa-icon
-              [icon]="['fas', 'pen-to-square']"
               class="cursor-pointer text-lg"
               (click)="deleteCategory(category.id)">
             </fa-icon>

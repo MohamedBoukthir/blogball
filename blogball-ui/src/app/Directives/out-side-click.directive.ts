@@ -33,5 +33,4 @@ export class OutSideClickDirective implements OnInit, OnDestroy{
       this.listener();
     }
   }
-
 }

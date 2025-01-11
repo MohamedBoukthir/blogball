@@ -48,17 +48,6 @@ public class CategoryServicesImpl implements CategoryServices {
     }
 
     @Override
-    public CategoryDto updateCategory(CategoryDto categoryDto, Long categoryId) {
-        Category category = categoryRepository
-                .findById(categoryId)
-                .orElseThrow( () -> new RuntimeException("Category Not Fount"));
-        category.setName(categoryDto.getName());
-        Category updatedCategory = categoryRepository.save(category);
-
-        return modelMapper.map(updatedCategory, CategoryDto.class);
-    }
-
-    @Override
     public void deleteCategory(Long categoryId) {
         Optional<Category> category = categoryRepository.findById(categoryId);
         category.ifPresent(categoryRepository::delete);

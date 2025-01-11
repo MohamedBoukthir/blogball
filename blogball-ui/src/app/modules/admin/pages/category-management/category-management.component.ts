@@ -11,19 +11,18 @@ export class CategoryManagementComponent implements OnInit{
 
   categories: Category[] = [];
   newCategory: Category = {id: 0, name:''};
-  selectedCategory: Category | null = null;
-
 
   // Access the modal dialog element
   @ViewChild('myModal') myModal: any;
+  @ViewChild('myModal2') myModal2: any;
 
-  openModal() {
+  openAddCategoryModal() {
     this.myModal.nativeElement.showModal(); // Show modal using the showModal method
   }
-  closeModal() {
+
+  closeAddCategoryModal() {
     this.myModal.nativeElement.close(); // Close modal using the close method
   }
-
 
 
   constructor(
@@ -54,7 +53,7 @@ export class CategoryManagementComponent implements OnInit{
       this.categoryService.addCategory(this.newCategory).subscribe({
         next: (category : Category) => {
           this.categories.push(category);
-          this.closeModal();
+          this.closeAddCategoryModal();
           this.newCategory = {id: 0, name: ''};
         },
         error: (err) => {
